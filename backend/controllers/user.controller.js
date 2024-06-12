@@ -3,22 +3,24 @@ import { User } from "../models/user.models.js";
 import { v2 as cloudinary } from "cloudinary";
 import bcrypt from "bcryptjs";
 
-const getUserProfile = async(req,res)=>{
-    const {username} = req.params;
+const getUserProfile = async (req, res) => {
+  const { username } = req.params;
 
-    try {
-        const user = User.findOne({username}).select("-password")
+  try {
+      // Await the user query to get the actual document
+      const user = await User.findOne({ username }).select("-password");
 
-        if (!user) {
-            return res.status(400).json({error:"User not found"})
-        }
+      if (!user) {
+          return res.status(404).json({ error: "User not found" });
+      }
 
-        return res.status(200).json(user)
-    } catch (error) {
-        console.log("Error in getUserProfile",error.message);
-        return res.status(500).json({error:"Internal Server Error"})
-    }
-}
+      return res.status(200).json(user);
+  } catch (error) {
+      console.error("Error in getUserProfile: ", error.message);
+      return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 
 
 const getSuggestedUsers = async (req, res) => {
