@@ -19,7 +19,7 @@ const EditProfileModal = () => {
 		<>
 			<button
 				className='btn btn-outline rounded-full btn-sm'
-				onClick={() => document.getElementById("edit_profile_modal").showModal()}
+				onClick={() => document.getElementById("edit_profile_modal").showModal()} //When the button is clicked, it calls document.getElementById("edit_profile_modal").showModal() to display the modal with the ID edit_profile_modal.
 			>
 				Edit profile
 			</button>

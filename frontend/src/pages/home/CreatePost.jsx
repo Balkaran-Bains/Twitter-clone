@@ -21,10 +21,12 @@ const CreatePost = () => {
 		alert("Post created successfully");
 	};
 
+	//This function handles changes to the file input. 
+	// It reads the selected image file and sets the img state with the file's data URL.
 	const handleImgChange = (e) => {
 		const file = e.target.files[0];
 		if (file) {
-			const reader = new FileReader();
+			const reader = new FileReader(); // FileReader is a built-in JavaScript API that allows web applications to read the contents of files asynchronously.
 			reader.onload = () => {
 				setImg(reader.result);
 			};

@@ -8,7 +8,7 @@ import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js"
 import postRoutes from "./routes/post.routes.js";
 import notificationtRoutes from "./routes/notification.routes.js";
-
+//import cors from 'cors'
 
 dotenv.config();
 
@@ -19,6 +19,11 @@ cloudinary.config({
   });
 
 const app = express();
+// app.use(cors({
+//   // origin: process.env.CORS_ORIGIN,
+//   origin:'http://localhost:3000',
+//   credentials: true,
+// }))
 app.use(cookieParser());
 
 
